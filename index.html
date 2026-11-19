@@ -1,0 +1,1344 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>51每日大赛 - 官方视频社区,每日赛事热点一手掌握</title>
+<meta name="description" content="51每日大赛官方网站，聚焦每日赛事热点与吃瓜话题的视频社区，汇聚原创创作者、赛事动态与精品内容，持续运营值得信赖的官方平台。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111a2b'/%3E%3Ccircle cx='32' cy='32' r='17' fill='none' stroke='%23ff5a5f' stroke-width='4'/%3E%3Cpath d='M27 22 L45 32 L27 42 Z' fill='%23ffd166'/%3E%3C/svg%3E">
+<style>
+:root{
+--dm-primary:#111a2b;
+--dm-dark:#0a0f1a;
+--dm-card:#16203a;
+--dm-red:#ff5a5f;
+--dm-yellow:#ffd166;
+--dm-cyan:#4cc9f0;
+--dm-text:#e8edf7;
+--dm-muted:#94a3c0;
+--dm-line:rgba(140,160,200,.18);
+--dm-radius:16px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+background:var(--dm-dark);
+color:var(--dm-text);
+line-height:1.75;
+-webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+.dm-wrap{width:min(1180px,92%);margin:0 auto}
+.dm-sticky{position:sticky;top:0;z-index:90}
+/* 公告条 */
+.dm-notice{
+background:linear-gradient(90deg,#ff5a5f,#ff8a5c 55%,#ffd166);
+color:#111a2b;font-size:13px;font-weight:600;
+}
+.dm-notice-inner{
+display:flex;align-items:center;gap:12px;
+padding:8px 0;overflow:hidden;
+}
+.dm-notice-tag{
+background:#111a2b;color:#ffd166;font-size:11px;letter-spacing:1px;
+padding:2px 9px;border-radius:20px;flex:none;
+}
+.dm-notice-track{flex:1;overflow:hidden;white-space:nowrap}
+.dm-notice-track span{
+display:inline-block;padding-left:100%;
+animation:dm-marquee 26s linear infinite;
+}
+@keyframes dm-marquee{to{transform:translateX(-100%)}}
+/* 页头 */
+.dm-header{
+background:rgba(10,15,26,.92);backdrop-filter:blur(12px);
+border-bottom:1px solid var(--dm-line);
+}
+.dm-header-inner{display:flex;align-items:center;gap:26px;padding:14px 0}
+.dm-logo{display:flex;align-items:center;gap:10px;flex:none}
+.dm-logo-mark{
+width:40px;height:40px;border-radius:12px;flex:none;
+background:linear-gradient(135deg,#ff5a5f,#ffd166);
+display:grid;place-items:center;color:#111a2b;font-weight:900;font-size:17px;
+}
+.dm-logo-text b{display:block;font-size:18px;letter-spacing:.5px}
+.dm-logo-text small{display:block;font-size:11px;color:var(--dm-muted);letter-spacing:2px}
+.dm-nav{display:flex;gap:4px;flex:1;flex-wrap:wrap}
+.dm-nav a{
+font-size:14px;color:var(--dm-muted);padding:7px 12px;border-radius:9px;
+transition:.22s;white-space:nowrap;
+}
+.dm-nav a:hover,.dm-nav a.dm-nav-on{color:#fff;background:rgba(255,90,95,.16)}
+.dm-search{display:flex;align-items:center;flex:none;position:relative}
+.dm-search input{
+width:200px;padding:9px 14px;border-radius:22px;border:1px solid var(--dm-line);
+background:rgba(255,255,255,.05);color:var(--dm-text);font-size:13px;outline:none;transition:.25s;
+}
+.dm-search input:focus{width:240px;border-color:var(--dm-red);background:rgba(255,90,95,.08)}
+.dm-search-btn{
+position:absolute;right:4px;top:50%;transform:translateY(-50%);
+width:30px;height:30px;border-radius:50%;background:var(--dm-red);
+display:grid;place-items:center;font-size:13px;color:#fff;
+}
+.dm-search-hint{
+position:absolute;top:calc(100% + 8px);right:0;width:260px;
+background:var(--dm-card);border:1px solid var(--dm-line);border-radius:12px;
+padding:10px 14px;font-size:12.5px;color:var(--dm-muted);
+box-shadow:0 18px 40px rgba(0,0,0,.45);display:none;
+}
+.dm-search-hint.dm-open{display:block}
+.dm-search-hint b{color:var(--dm-yellow)}
+.dm-burger{display:none;width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.06);font-size:18px}
+/* 首屏 */
+.dm-hero{position:relative;padding:60px 0 70px;overflow:hidden}
+.dm-hero::before{
+content:"";position:absolute;inset:0;
+background:
+radial-gradient(circle at 12% 18%,rgba(255,90,95,.22),transparent 46%),
+radial-gradient(circle at 88% 8%,rgba(76,201,240,.18),transparent 44%),
+radial-gradient(circle at 60% 96%,rgba(255,209,102,.13),transparent 50%);
+pointer-events:none;
+}
+.dm-hero-grid{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center}
+.dm-badge{
+display:inline-flex;align-items:center;gap:8px;
+font-size:12.5px;letter-spacing:2px;color:var(--dm-yellow);
+border:1px solid rgba(255,209,102,.4);padding:5px 14px;border-radius:20px;margin-bottom:20px;
+background:rgba(255,209,102,.07);
+}
+.dm-badge i{width:6px;height:6px;border-radius:50%;background:var(--dm-yellow);animation:dm-pulse 1.6s infinite}
+@keyframes dm-pulse{50%{opacity:.25}}
+.dm-hero h1{
+font-size:clamp(34px,4.6vw,56px);line-height:1.15;letter-spacing:1px;margin-bottom:18px;
+}
+.dm-hero h1 em{
+font-style:normal;
+background:linear-gradient(100deg,#ff5a5f,#ffd166);
+-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.dm-hero-lead{font-size:16px;color:var(--dm-muted);max-width:520px;margin-bottom:16px}
+.dm-hero-intro{
+font-size:14px;color:#c3cde4;max-width:540px;margin-bottom:28px;
+padding-left:16px;border-left:3px solid var(--dm-red);
+}
+.dm-btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:34px}
+.dm-btn{
+display:inline-flex;align-items:center;gap:8px;
+padding:12px 26px;border-radius:30px;font-size:14.5px;font-weight:600;transition:.25s;
+}
+.dm-btn-main{background:linear-gradient(100deg,#ff5a5f,#ff8a5c);color:#fff;box-shadow:0 12px 30px rgba(255,90,95,.32)}
+.dm-btn-main:hover{transform:translateY(-2px);box-shadow:0 18px 38px rgba(255,90,95,.42)}
+.dm-btn-ghost{border:1px solid var(--dm-line);color:var(--dm-text);background:rgba(255,255,255,.04)}
+.dm-btn-ghost:hover{border-color:var(--dm-cyan);color:var(--dm-cyan)}
+.dm-stats{display:flex;gap:34px;flex-wrap:wrap}
+.dm-stat b{display:block;font-size:26px;color:var(--dm-yellow);letter-spacing:1px}
+.dm-stat span{font-size:12.5px;color:var(--dm-muted)}
+.dm-hero-visual{position:relative}
+.dm-hero-frame{
+border-radius:22px;overflow:hidden;border:1px solid var(--dm-line);
+box-shadow:0 30px 70px rgba(0,0,0,.55);position:relative;
+}
+.dm-hero-frame img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.dm-hero-caption{
+position:absolute;left:0;right:0;bottom:0;padding:46px 22px 18px;
+background:linear-gradient(transparent,rgba(10,15,26,.94));
+font-size:13.5px;
+}
+.dm-hero-caption b{display:block;font-size:16px;margin-bottom:3px}
+.dm-hero-caption span{color:var(--dm-muted);font-size:12.5px}
+.dm-float-card{
+position:absolute;right:-14px;bottom:-24px;
+background:var(--dm-card);border:1px solid var(--dm-line);border-radius:14px;
+padding:12px 18px;font-size:12.5px;box-shadow:0 18px 40px rgba(0,0,0,.5);
+}
+.dm-float-card b{color:var(--dm-cyan);display:block;font-size:15px}
+.dm-float-card span{color:var(--dm-muted)}
+/* 通用 section */
+.dm-section{padding:64px 0;position:relative}
+.dm-section-alt{background:rgba(255,255,255,.022);border-top:1px solid var(--dm-line);border-bottom:1px solid var(--dm-line)}
+.dm-sec-head{margin-bottom:34px}
+.dm-sec-kicker{
+font-size:12px;letter-spacing:3px;color:var(--dm-red);font-weight:700;margin-bottom:8px;
+display:flex;align-items:center;gap:8px;
+}
+.dm-sec-kicker::after{content:"";flex:none;width:34px;height:1px;background:var(--dm-red)}
+.dm-sec-head h2{font-size:clamp(23px,3vw,31px);letter-spacing:.5px;margin-bottom:8px}
+.dm-sec-head p{color:var(--dm-muted);font-size:14px;max-width:720px}
+/* 焦点内容 */
+.dm-focus-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:22px}
+.dm-focus-main,.dm-focus-side-card{border-radius:var(--dm-radius);overflow:hidden;position:relative;display:block;border:1px solid var(--dm-line)}
+.dm-focus-main img{width:100%;aspect-ratio:16/10;object-fit:cover;transition:.5s}
+.dm-focus-main:hover img{transform:scale(1.04)}
+.dm-mask{position:absolute;inset:0;background:linear-gradient(transparent 24%,rgba(8,12,22,.94))}
+.dm-focus-body{position:absolute;left:0;right:0;bottom:0;padding:26px}
+.dm-focus-body h3{font-size:21px;margin-bottom:8px}
+.dm-focus-body p{font-size:13.5px;color:#b9c5dd;margin-bottom:12px}
+.dm-tag-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.dm-tag{
+font-size:11.5px;padding:3px 10px;border-radius:20px;
+background:rgba(255,90,95,.16);color:#ff9a9e;border:1px solid rgba(255,90,95,.3);
+}
+.dm-tag.dm-tag-cyan{background:rgba(76,201,240,.12);color:#7fd8f2;border-color:rgba(76,201,240,.3)}
+.dm-tag.dm-tag-yellow{background:rgba(255,209,102,.12);color:var(--dm-yellow);border-color:rgba(255,209,102,.3)}
+.dm-meta{font-size:12px;color:var(--dm-muted)}
+.dm-focus-side{display:grid;grid-template-rows:1fr 1fr;gap:22px}
+.dm-focus-side-card img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover;transition:.5s}
+.dm-focus-side-card:hover img{transform:scale(1.05)}
+.dm-focus-side-body{position:relative;z-index:2;padding:20px;margin-top:auto;height:100%;display:flex;flex-direction:column;justify-content:flex-end}
+.dm-focus-side-body h3{font-size:16px;line-height:1.5;margin-bottom:6px}
+.dm-focus-side-body .dm-meta{font-size:11.5px}
+/* 视频流 */
+.dm-video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.dm-video-card{
+background:var(--dm-card);border:1px solid var(--dm-line);border-radius:var(--dm-radius);
+overflow:hidden;transition:.3s;display:flex;flex-direction:column;
+}
+.dm-video-card:hover{transform:translateY(-6px);border-color:rgba(255,90,95,.5);box-shadow:0 22px 44px rgba(0,0,0,.45)}
+.dm-cover{position:relative;overflow:hidden}
+.dm-cover img{width:100%;aspect-ratio:16/9;object-fit:cover;transition:.45s}
+.dm-video-card:hover .dm-cover img{transform:scale(1.06)}
+.dm-play{
+position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+width:46px;height:46px;border-radius:50%;background:rgba(255,90,95,.88);
+display:grid;place-items:center;color:#fff;font-size:16px;
+box-shadow:0 8px 22px rgba(255,90,95,.5);transition:.3s;
+}
+.dm-video-card:hover .dm-play{transform:translate(-50%,-50%) scale(1.12)}
+.dm-cover-chip{
+position:absolute;left:10px;top:10px;font-size:11px;padding:3px 10px;border-radius:6px;
+background:rgba(8,12,22,.78);color:var(--dm-yellow);backdrop-filter:blur(4px);
+}
+.dm-cover-time{position:absolute;right:10px;bottom:10px;font-size:11px;background:rgba(8,12,22,.8);padding:2px 8px;border-radius:5px;color:#cfd8ea}
+.dm-video-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.dm-video-body h3{font-size:15.5px;line-height:1.55}
+.dm-video-body p{font-size:12.8px;color:var(--dm-muted);flex:1}
+.dm-video-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:4px}
+.dm-author-mini{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--dm-muted)}
+.dm-avatar{
+width:26px;height:26px;border-radius:50%;flex:none;display:grid;place-items:center;
+font-size:12px;font-weight:700;color:#0a0f1a;
+}
+.dm-actions{display:flex;gap:4px}
+.dm-act{
+font-size:12px;padding:4px 9px;border-radius:16px;color:var(--dm-muted);
+border:1px solid transparent;transition:.22s;white-space:nowrap;
+}
+.dm-act:hover{background:rgba(255,90,95,.14);color:#ff9a9e}
+.dm-act.dm-act-on{color:var(--dm-red);background:rgba(255,90,95,.16)}
+.dm-act.dm-save-on{color:var(--dm-yellow);background:rgba(255,209,102,.14)}
+/* 专题 */
+.dm-topic-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.dm-topic{
+border-radius:var(--dm-radius);border:1px solid var(--dm-line);padding:22px;
+background:linear-gradient(160deg,rgba(255,90,95,.1),rgba(22,32,58,.6));
+transition:.3s;
+}
+.dm-topic:nth-child(2){background:linear-gradient(160deg,rgba(76,201,240,.1),rgba(22,32,58,.6))}
+.dm-topic:nth-child(3){background:linear-gradient(160deg,rgba(255,209,102,.1),rgba(22,32,58,.6))}
+.dm-topic:hover{transform:translateY(-4px);border-color:rgba(255,209,102,.45)}
+.dm-topic-status{font-size:11.5px;color:var(--dm-yellow);letter-spacing:1px;margin-bottom:10px}
+.dm-topic h3{font-size:17px;margin-bottom:8px}
+.dm-topic p{font-size:13px;color:var(--dm-muted);margin-bottom:14px}
+.dm-topic-bar{height:5px;border-radius:5px;background:rgba(255,255,255,.08);overflow:hidden}
+.dm-topic-bar i{display:block;height:100%;border-radius:5px;background:linear-gradient(90deg,#ff5a5f,#ffd166)}
+/* 创作者 */
+.dm-creator-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.dm-creator{
+background:var(--dm-card);border:1px solid var(--dm-line);border-radius:var(--dm-radius);
+padding:22px 18px;text-align:center;transition:.3s;cursor:pointer;
+}
+.dm-creator:hover{transform:translateY(-5px);border-color:rgba(76,201,240,.5)}
+.dm-creator .dm-avatar{width:58px;height:58px;font-size:22px;margin:0 auto 12px}
+.dm-creator h3{font-size:15.5px;margin-bottom:4px}
+.dm-creator .dm-creator-field{font-size:11.5px;color:var(--dm-cyan);margin-bottom:10px}
+.dm-creator p{font-size:12.5px;color:var(--dm-muted);margin-bottom:12px;min-height:56px}
+.dm-creator-data{display:flex;justify-content:center;gap:18px;font-size:11.5px;color:var(--dm-muted);border-top:1px solid var(--dm-line);padding-top:11px}
+.dm-creator-data b{color:var(--dm-text);display:block;font-size:13px}
+/* 排行 */
+.dm-rank-wrap{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.dm-rank-list{background:var(--dm-card);border:1px solid var(--dm-line);border-radius:var(--dm-radius);padding:20px}
+.dm-rank-list h3{font-size:16px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.dm-rank-list h3::before{content:"";width:4px;height:16px;border-radius:3px;background:var(--dm-red)}
+.dm-rank-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px dashed var(--dm-line);font-size:13.5px}
+.dm-rank-item:last-child{border-bottom:none}
+.dm-rank-num{width:22px;height:22px;border-radius:6px;display:grid;place-items:center;font-size:11.5px;font-weight:700;background:rgba(255,255,255,.07);color:var(--dm-muted);flex:none}
+.dm-rank-item:nth-child(2) .dm-rank-num{background:linear-gradient(135deg,#ff5a5f,#ff8a5c);color:#fff}
+.dm-rank-item:nth-child(3) .dm-rank-num{background:linear-gradient(135deg,#ffd166,#ffb347);color:#0a0f1a}
+.dm-rank-item:nth-child(4) .dm-rank-num{background:linear-gradient(135deg,#4cc9f0,#3a86ff);color:#fff}
+.dm-rank-title{flex:1}
+.dm-rank-hot{font-size:11.5px;color:var(--dm-red)}
+/* 评价 */
+.dm-review-grid{columns:3;column-gap:20px}
+.dm-review{
+break-inside:avoid;background:var(--dm-card);border:1px solid var(--dm-line);
+border-radius:14px;padding:18px;margin-bottom:20px;transition:.3s;
+}
+.dm-review:hover{border-color:rgba(255,209,102,.45)}
+.dm-review-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.dm-review-head b{font-size:13.5px}
+.dm-review-head span{font-size:11.5px;color:var(--dm-muted);margin-left:auto}
+.dm-review p{font-size:13px;color:#c3cde4}
+/* 品牌故事 */
+.dm-story-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:start}
+.dm-story-text p{font-size:14px;color:#bec9e0;margin-bottom:14px}
+.dm-story-text p b{color:var(--dm-yellow);font-weight:600}
+.dm-story-side{display:grid;gap:16px}
+.dm-story-item{
+background:var(--dm-card);border:1px solid var(--dm-line);border-radius:14px;
+padding:18px 20px;display:flex;gap:14px;align-items:flex-start;
+}
+.dm-story-item i{
+width:34px;height:34px;border-radius:10px;flex:none;display:grid;place-items:center;
+font-style:normal;font-size:15px;background:rgba(255,90,95,.14);color:#ff8a8d;
+}
+.dm-story-item:nth-child(2) i{background:rgba(76,201,240,.14);color:#7fd8f2}
+.dm-story-item:nth-child(3) i{background:rgba(255,209,102,.14);color:var(--dm-yellow)}
+.dm-story-item h3{font-size:14.5px;margin-bottom:4px}
+.dm-story-item p{font-size:12.8px;color:var(--dm-muted)}
+/* 作品墙 */
+.dm-wall{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;gap:14px}
+.dm-wall-item{
+border-radius:12px;overflow:hidden;position:relative;border:1px solid var(--dm-line);
+}
+.dm-wall-item img{width:100%;height:100%;object-fit:cover;transition:.45s}
+.dm-wall-item:hover img{transform:scale(1.07)}
+.dm-wall-item.dm-wall-big{grid-column:span 2;grid-row:span 2}
+.dm-wall-item.dm-wall-wide{grid-column:span 2}
+.dm-wall-cap{
+position:absolute;left:0;right:0;bottom:0;padding:22px 12px 9px;font-size:12px;
+background:linear-gradient(transparent,rgba(8,12,22,.92));
+}
+/* 动态 */
+.dm-news-list{display:grid;gap:14px}
+.dm-news-item{
+display:flex;align-items:center;gap:16px;background:var(--dm-card);
+border:1px solid var(--dm-line);border-radius:13px;padding:16px 20px;transition:.28s;
+}
+.dm-news-item:hover{border-color:rgba(255,90,95,.5);transform:translateX(4px)}
+.dm-news-date{
+font-size:12px;color:var(--dm-yellow);flex:none;width:88px;letter-spacing:.5px;
+}
+.dm-news-item h3{font-size:14.5px;flex:1}
+.dm-news-chip{font-size:11px;padding:2px 9px;border-radius:20px;background:rgba(76,201,240,.13);color:#7fd8f2;flex:none}
+/* FAQ */
+.dm-faq{display:grid;gap:12px;max-width:900px}
+.dm-faq details{
+background:var(--dm-card);border:1px solid var(--dm-line);border-radius:12px;
+padding:16px 20px;transition:.25s;
+}
+.dm-faq details[open]{border-color:rgba(255,209,102,.4)}
+.dm-faq summary{
+font-size:14.5px;font-weight:600;cursor:pointer;list-style:none;
+display:flex;align-items:center;justify-content:space-between;gap:12px;
+}
+.dm-faq summary::-webkit-details-marker{display:none}
+.dm-faq summary::after{content:"+";font-size:18px;color:var(--dm-yellow);transition:.25s}
+.dm-faq details[open] summary::after{transform:rotate(45deg)}
+.dm-faq p{font-size:13px;color:var(--dm-muted);margin-top:10px;padding-top:10px;border-top:1px dashed var(--dm-line)}
+/* 投稿 */
+.dm-cta{
+background:linear-gradient(120deg,rgba(255,90,95,.16),rgba(76,201,240,.12));
+border:1px solid var(--dm-line);border-radius:22px;padding:44px;text-align:center;
+}
+.dm-cta h2{font-size:clamp(21px,3vw,28px);margin-bottom:10px}
+.dm-cta p{color:var(--dm-muted);font-size:14px;max-width:600px;margin:0 auto 24px}
+.dm-cta .dm-btn-row{justify-content:center;margin-bottom:0}
+/* 页脚 */
+.dm-footer{background:#070b13;border-top:1px solid var(--dm-line);padding:48px 0 26px;margin-top:20px}
+.dm-footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:30px;margin-bottom:32px}
+.dm-footer h4{font-size:13.5px;margin-bottom:12px;color:var(--dm-text)}
+.dm-footer p,.dm-footer li{font-size:12.8px;color:var(--dm-muted);line-height:2}
+.dm-footer ul{list-style:none}
+.dm-footer a:hover{color:var(--dm-yellow)}
+.dm-footer-bottom{border-top:1px solid var(--dm-line);padding-top:18px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--dm-muted)}
+/* 回到顶部 */
+.dm-top-btn{
+position:fixed;right:22px;bottom:26px;width:44px;height:44px;border-radius:50%;
+background:linear-gradient(135deg,#ff5a5f,#ff8a5c);color:#fff;font-size:17px;
+display:grid;place-items:center;box-shadow:0 10px 26px rgba(255,90,95,.42);
+opacity:0;pointer-events:none;transform:translateY(14px);transition:.3s;z-index:80;
+}
+.dm-top-btn.dm-show{opacity:1;pointer-events:auto;transform:none}
+/* Toast */
+.dm-toast{
+position:fixed;left:50%;bottom:40px;transform:translate(-50%,20px);
+background:#ffd166;color:#0a0f1a;font-size:13px;font-weight:700;
+padding:11px 24px;border-radius:30px;box-shadow:0 14px 34px rgba(0,0,0,.5);
+opacity:0;pointer-events:none;transition:.3s;z-index:200;
+}
+.dm-toast.dm-show{opacity:1;transform:translate(-50%,0)}
+/* 弹窗 */
+.dm-modal{
+position:fixed;inset:0;background:rgba(4,7,13,.78);backdrop-filter:blur(6px);
+display:none;place-items:center;z-index:300;padding:20px;
+}
+.dm-modal.dm-open{display:grid}
+.dm-modal-box{
+width:min(480px,100%);background:var(--dm-card);border:1px solid var(--dm-line);
+border-radius:18px;padding:28px;box-shadow:0 30px 70px rgba(0,0,0,.6);position:relative;
+max-height:86vh;overflow:auto;
+}
+.dm-modal-box h3{font-size:19px;margin-bottom:8px}
+.dm-modal-box .dm-meta{margin-bottom:18px}
+.dm-modal-close{position:absolute;right:16px;top:14px;font-size:20px;color:var(--dm-muted)}
+.dm-modal-close:hover{color:var(--dm-red)}
+.dm-share-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}
+.dm-share-row button{
+background:rgba(255,255,255,.06);border:1px solid var(--dm-line);border-radius:11px;
+padding:12px 4px;font-size:12px;display:grid;gap:6px;place-items:center;transition:.22s;
+}
+.dm-share-row button:hover{border-color:var(--dm-red);color:#ff9a9e}
+.dm-share-row span{font-size:18px}
+.dm-modal-box input,.dm-modal-box textarea{
+width:100%;background:rgba(255,255,255,.05);border:1px solid var(--dm-line);
+border-radius:10px;padding:11px 14px;color:var(--dm-text);font-size:13.5px;
+margin-bottom:12px;outline:none;font-family:inherit;
+}
+.dm-modal-box input:focus,.dm-modal-box textarea:focus{border-color:var(--dm-red)}
+.dm-modal-box textarea{min-height:96px;resize:vertical}
+@media (max-width:1000px){
+.dm-hero-grid{grid-template-columns:1fr;gap:38px}
+.dm-focus-grid{grid-template-columns:1fr}
+.dm-focus-side{grid-template-rows:none;grid-template-columns:1fr 1fr}
+.dm-video-grid{grid-template-columns:repeat(2,1fr)}
+.dm-topic-grid{grid-template-columns:1fr 1fr}
+.dm-creator-grid{grid-template-columns:repeat(2,1fr)}
+.dm-rank-wrap,.dm-story-grid{grid-template-columns:1fr}
+.dm-review-grid{columns:2}
+.dm-footer-grid{grid-template-columns:1fr 1fr}
+.dm-nav{display:none}
+.dm-burger{display:grid;place-items:center}
+.dm-search input{width:150px}
+.dm-search input:focus{width:180px}
+.dm-header-open .dm-nav{
+display:flex;position:absolute;left:0;right:0;top:100%;
+background:var(--dm-dark);flex-direction:column;padding:14px;
+border-bottom:1px solid var(--dm-line);gap:2px;
+}
+.dm-header{position:relative}
+}
+@media (max-width:620px){
+.dm-video-grid,.dm-topic-grid,.dm-creator-grid{grid-template-columns:1fr}
+.dm-focus-side{grid-template-columns:1fr}
+.dm-review-grid{columns:1}
+.dm-wall{grid-template-columns:1fr 1fr;grid-auto-rows:130px}
+.dm-wall-item.dm-wall-big{grid-column:span 2;grid-row:span 1}
+.dm-wall-item.dm-wall-wide{grid-column:span 2}
+.dm-stats{gap:22px}
+.dm-news-item{flex-wrap:wrap;gap:8px}
+.dm-news-date{width:auto}
+.dm-footer-grid{grid-template-columns:1fr}
+.dm-search{display:none}
+.dm-cta{padding:30px 20px}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="dm-sticky">
+  <div class="dm-notice">
+    <div class="dm-wrap dm-notice-inner">
+      <span class="dm-notice-tag">今日更新</span>
+      <div class="dm-notice-track">
+        <span>【11月19日】51每日大赛今日吃瓜专题新增 6 条赛事速报 · “城市夜跑挑战赛”报名通道已开启 · 创作者激励计划第二期开放投稿 · 本周热榜前十已刷新，点击查看完整榜单</span>
+      </div>
+    </div>
+  </div>
+  <header class="dm-header" id="dmHeader">
+    <div class="dm-wrap dm-header-inner">
+      <a class="dm-logo" href="#dmHero">
+        <span class="dm-logo-mark">51</span>
+        <span class="dm-logo-text"><b>51每日大赛</b><small>DAILY MATCH</small></span>
+      </a>
+      <nav class="dm-nav" id="dmNav">
+        <a href="#dmHero" class="dm-nav-on">首页</a>
+        <a href="#dmFocus">焦点赛事</a>
+        <a href="#dmVideos">热门视频</a>
+        <a href="#dmTopics">专题企划</a>
+        <a href="#dmCreators">创作者</a>
+        <a href="#dmRank">榜单</a>
+        <a href="#dmStory">品牌故事</a>
+        <a href="#dmNews">企业动态</a>
+        <a href="#dmFaq">帮助</a>
+      </nav>
+      <div class="dm-search">
+        <input type="search" id="dmSearchInput" placeholder="搜索赛事 / 话题 / 创作者" aria-label="站内搜索">
+        <button class="dm-search-btn" id="dmSearchBtn" aria-label="搜索">🔍</button>
+        <div class="dm-search-hint" id="dmSearchHint"></div>
+      </div>
+      <button class="dm-burger" id="dmBurger" aria-label="展开导航">☰</button>
+    </div>
+  </header>
+</div>
+
+<!-- 首屏 -->
+<main>
+<section class="dm-hero" id="dmHero">
+  <div class="dm-wrap dm-hero-grid">
+    <div>
+      <span class="dm-badge"><i></i>官方网站 · 官方发布</span>
+      <h1>51每日大赛：<em>每日赛事与吃瓜热点</em>的视频社区</h1>
+      <p class="dm-hero-lead">每天都有新赛点，每天都有新话题。我们用影像记录每一场赛事的高光、每一位创作者的现场，也记录围观者的真实反应。</p>
+      <p class="dm-hero-intro">51每日大赛官方网站由内容团队持续运营，面向赛事爱好者、内容创作者与品牌合作方，提供原创高清视频、赛事速报、专题企划与创作者成长支持。作为深耕赛事内容领域的视频品牌，我们坚持真实记录、专业解读与社区共建，让“吃瓜”不止于围观，更成为理解赛事的方式。</p>
+      <div class="dm-btn-row">
+        <a class="dm-btn dm-btn-main" href="#dmVideos">查看今日赛况 ▸</a>
+        <a class="dm-btn dm-btn-ghost" href="#dmTopics">进入专题企划</a>
+        <button class="dm-btn dm-btn-ghost" id="dmSubmitOpen">我要投稿</button>
+      </div>
+      <div class="dm-stats">
+        <div class="dm-stat"><b>1,860万</b><span>月度视频播放</span></div>
+        <div class="dm-stat"><b>2,400+</b><span>在册原创创作者</span></div>
+        <div class="dm-stat"><b>865场</b><span>累计记录赛事</span></div>
+      </div>
+    </div>
+    <div class="dm-hero-visual">
+      <div class="dm-hero-frame">
+        <img alt="51每日大赛今日吃瓜主视觉：赛事现场观众席与巨型计分屏" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23172440'/%3E%3Cstop offset='1' stop-color='%230a0f1a'/%3E%3C/linearGradient%3E%3ClinearGradient id='g2' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23ff5a5f'/%3E%3Cstop offset='1' stop-color='%23ffd166'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='500' fill='url(%23g1)'/%3E%3Ccircle cx='640' cy='120' r='150' fill='%23ff5a5f' opacity='.16'/%3E%3Ccircle cx='160' cy='420' r='180' fill='%234cc9f0' opacity='.12'/%3E%3Crect x='80' y='90' width='640' height='250' rx='18' fill='%23111a2b' stroke='%23ffd166' stroke-width='2'/%3E%3Crect x='110' y='120' width='220' height='14' rx='7' fill='%23ff5a5f'/%3E%3Crect x='110' y='150' width='380' height='10' rx='5' fill='%23364a75'/%3E%3Crect x='110' y='172' width='300' height='10' rx='5' fill='%23364a75'/%3E%3Crect x='110' y='210' width='140' height='96' rx='10' fill='%230a0f1a'/%3E%3Crect x='262' y='210' width='140' height='96' rx='10' fill='%230a0f1a'/%3E%3Crect x='414' y='210' width='140' height='96' rx='10' fill='%230a0f1a'/%3E%3Ccircle cx='180' cy='258' r='20' fill='url(%23g2)'/%3E%3Cpath d='M174 248 L194 258 L174 268 Z' fill='%230a0f1a'/%3E%3Ctext x='590' y='150' fill='%23ffd166' font-size='30' font-family='sans-serif' font-weight='bold'%3E51%3C/text%3E%3Ctext x='590' y='178' fill='%2394a3c0' font-size='13' font-family='sans-serif'%3EDAILY MATCH%3C/text%3E%3Cg fill='%23364a75'%3E%3Ccircle cx='140' cy='392' r='16'/%3E%3Ccircle cx='200' cy='392' r='16'/%3E%3Ccircle cx='260' cy='392' r='16'/%3E%3Ccircle cx='320' cy='392' r='16'/%3E%3Ccircle cx='380' cy='392' r='16'/%3E%3Ccircle cx='440' cy='392' r='16'/%3E%3Ccircle cx='500' cy='392' r='16'/%3E%3Ccircle cx='560' cy='392' r='16'/%3E%3C/g%3E%3Cg fill='%23ff5a5f' opacity='.8'%3E%3Ccircle cx='140' cy='392' r='7'/%3E%3Ccircle cx='380' cy='392' r='7'/%3E%3Ccircle cx='560' cy='392' r='7'/%3E%3C/g%3E%3C/svg%3E">
+        <div class="dm-hero-caption">
+          <b>今日吃瓜主会场 · 赛事第二现场</b>
+          <span>2026/11/19 更新 · 时长 12:40 · 官方出品</span>
+        </div>
+      </div>
+      <div class="dm-float-card">
+        <b>+312%</b>
+        <span>今日话题热度增长</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 焦点赛事 -->
+<section class="dm-section" id="dmFocus">
+  <div class="dm-wrap">
+    <div class="dm-sec-head">
+      <div class="dm-sec-kicker">FOCUS 焦点赛事</div>
+      <h2>今天最值得看的三场，已经从现场剪好</h2>
+      <p>编辑团队每天从数十场投稿与官方机位中挑选重点赛事，给出完整回看与关键节点解读。焦点内容均为原创正版，支持高清播放。</p>
+    </div>
+    <div class="dm-focus-grid">
+      <a class="dm-focus-main" href="#dmVideos">
+        <img alt="焦点视频：51每日大赛城市夜跑挑战赛决赛现场冲刺瞬间" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 560'%3E%3Cdefs%3E%3ClinearGradient id='f1' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%230d1627'/%3E%3Cstop offset='1' stop-color='%231d2b4d'/%3E%3C/linearGradient%3E%3ClinearGradient id='f2' x1='0' y1='0' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%23ff5a5f'/%3E%3Cstop offset='1' stop-color='%23ffd166'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='900' height='560' fill='url(%23f1)'/%3E%3Cpath d='M0 420 L900 340 L900 560 L0 560 Z' fill='%230a0f1a' opacity='.7'/%3E%3Cg stroke='%23ffd166' stroke-width='3' opacity='.65'%3E%3Cpath d='M60 460 L300 250'/%3E%3Cpath d='M180 500 L420 290'/%3E%3Cpath d='M300 540 L540 330'/%3E%3C/g%3E%3Cg fill='%23ff5a5f'%3E%3Ccircle cx='360' cy='250' r='20'/%3E%3Ccircle cx='500' cy='220' r='20'/%3E%3Ccircle cx='640' cy='200' r='20'/%3E%3C/g%3E%3Cg stroke='%23ff5a5f' stroke-width='14' stroke-linecap='round'%3E%3Cpath d='M360 270 L360 350'/%3E%3Cpath d='M340 320 L400 300'/%3E%3Cpath d='M340 400 L380 360 L410 430' fill='none'/%3E%3C/g%3E%3Crect x='620' y='300' width='200' height='90' rx='12' fill='%23111a2b' stroke='%234cc9f0' stroke-width='2'/%3E%3Ctext x='640' y='340' fill='%234cc9f0' font-size='22' font-family='sans-serif'%3E00:12:40%3C/text%3E%3Ctext x='640' y='368' fill='%2394a3c0' font-size='12' font-family='sans-serif'%3EFINAL SPRINT%3C/text%3E%3Crect x='60' y='60' width='210' height='38' rx='19' fill='url(%23f2)'/%3E%3Ctext x='84' y='85' fill='%230a0f1a' font-size='14' font-family='sans-serif' font-weight='bold'%3E今日焦点 · 决赛%3C/text%3E%3C/svg%3E">
+        <div class="dm-mask"></div>
+        <div class="dm-focus-body">
+          <div class="dm-tag-row">
+            <span class="dm-tag">城市夜跑</span>
+            <span class="dm-tag dm-tag-yellow">决赛回看</span>
+          </div>
+          <h3>最后两百米：城市夜跑挑战赛决赛的三次反超</h3>
+          <p>从第三道起跑、后半程提速，到终点前 0.3 秒的判定，我们把六个机位的关键帧拼成了一条时间线，还原这场被讨论了一整天的比赛。</p>
+          <div class="dm-meta">官方赛事组 · 12:40 · 3.2万次播放 · 18小时前</div>
+        </div>
+      </a>
+      <div class="dm-focus-side">
+        <a class="dm-focus-side-card" href="#dmVideos">
+          <img alt="焦点视频：51每日大赛才艺赛后台采访间创作者对话" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%23131f38'/%3E%3Ccircle cx='480' cy='80' r='130' fill='%234cc9f0' opacity='.15'/%3E%3Crect x='70' y='120' width='150' height='190' rx='14' fill='%230a0f1a' stroke='%23ff5a5f' stroke-width='2'/%3E%3Ccircle cx='145' cy='175' r='26' fill='%23ffd166'/%3E%3Cpath d='M110 260 Q145 220 180 260 L180 300 L110 300 Z' fill='%23ffd166'/%3E%3Crect x='250' y='150' width='280' height='130' rx='12' fill='%231a2642' stroke='%23364a75'/%3E%3Crect x='272' y='176' width='180' height='10' rx='5' fill='%23ff5a5f'/%3E%3Crect x='272' y='198' width='230' height='8' rx='4' fill='%23364a75'/%3E%3Crect x='272' y='216' width='200' height='8' rx='4' fill='%23364a75'/%3E%3Crect x='272' y='240' width='110' height='22' rx='11' fill='%234cc9f0' opacity='.8'/%3E%3C/svg%3E">
+          <div class="dm-mask"></div>
+          <div class="dm-focus-side-body">
+            <div class="dm-tag-row"><span class="dm-tag dm-tag-cyan">人物访谈</span></div>
+            <h3>后台十分钟：才艺赛选手最想说的那句话</h3>
+            <div class="dm-meta">8:15 · 创作者频道 · 今日 09:20</div>
+          </div>
+        </a>
+        <a class="dm-focus-side-card" href="#dmVideos">
+          <img alt="焦点视频：51每日大赛吃瓜现场观众实时反应合集" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%231a1428'/%3E%3Cg%3E%3Crect x='40' y='70' width='160' height='110' rx='10' fill='%232a1f3d'/%3E%3Crect x='220' y='70' width='160' height='110' rx='10' fill='%232a1f3d'/%3E%3Crect x='400' y='70' width='160' height='110' rx='10' fill='%232a1f3d'/%3E%3C/g%3E%3Cg fill='%23ffd166'%3E%3Ccircle cx='120' cy='125' r='18'/%3E%3Ccircle cx='300' cy='125' r='18'/%3E%3Ccircle cx='480' cy='125' r='18'/%3E%3C/g%3E%3Cg fill='%23ff5a5f'%3E%3Crect x='80' y='220' width='440' height='12' rx='6'/%3E%3Crect x='120' y='250' width='360' height='10' rx='5'/%3E%3Crect x='160' y='278' width='280' height='10' rx='5'/%3E%3C/g%3E%3C/svg%3E">
+          <div class="dm-mask"></div>
+          <div class="dm-focus-side-body">
+            <div class="dm-tag-row"><span class="dm-tag">今日吃瓜</span></div>
+            <h3>围观席的声音：今天大家到底在讨论什么</h3>
+            <div class="dm-meta">6:42 · 社区精选 · 今日 11:05</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 热门视频流 -->
+<section class="dm-section dm-section-alt" id="dmVideos">
+  <div class="dm-wrap">
+    <div class="dm-sec-head">
+      <div class="dm-sec-kicker">HOT 热门视频</div>
+      <h2>今日热门视频流：从现场到复盘，一条条看下去</h2>
+      <p>每张卡片对应一条可直接进入的赛事内容，涵盖速报、复盘、采访与花絮。播放按钮支持轻交互，点赞与收藏会即时记录到你的本次浏览。</p>
+    </div>
+    <div class="dm-video-grid" id="dmVideoGrid">
+      <article class="dm-video-card">
+        <div class="dm-cover">
+          <img alt="视频封面：51每日大赛城市夜跑挑战赛起跑线全景" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Crect width='640' height='360' fill='%230f1a2e'/%3E%3Cpath d='M0 250 L640 200 L640 360 L0 360 Z' fill='%2314243d'/%3E%3Cg stroke='%23ffd166' stroke-width='2' opacity='.6'%3E%3Cpath d='M40 300 L200 220'/%3E%3Cpath d='M140 330 L300 250'/%3E%3Cpath d='M240 360 L400 280'/%3E%3C/g%3E%3Cg fill='%23ff5a5f'%3E%3Ccircle cx='260' cy='200' r='14'/%3E%3Ccircle cx='380' cy='180' r='14'/%3E%3Ccircle cx='500' cy='165' r='14'/%3E%3C/g%3E%3Crect x='380' y='60' width='200' height='60' rx='10' fill='%23111a2b' stroke='%234cc9f0'/%3E%3Ctext x='400' y='97' fill='%234cc9f0' font-size='18' font-family='sans-serif'%3ESTART 21:00%3C/text%3E%3C/svg%3E">
+          <span class="dm-cover-chip">赛事速报</span>
+          <span class="dm-cover-time">09:30</span>
+          <span class="dm-play">▶</span>
+        </div>
+        <div class="dm-video-body">
+          <h3>发令枪响后的第一个弯道，把整场比赛的节奏定下来了</h3>
+          <p>三分钟看完夜跑挑战赛上半程：配速、卡位与一次有争议的并线。</p>
+          <div class="dm-video-foot">
+            <span class="dm-author-mini"><span class="dm-avatar" style="background:#ffd166">赛</span>赛事观察组</span>
+            <div class="dm-actions">
+              <button class="dm-act dm-like" data-count="1284">👍 1284</button>
+              <button class="dm-act dm-save">♡ 收藏</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="dm-video-card">
+        <div class="dm-cover">
+          <img alt="视频封面：51每日大赛吃瓜话题聚焦后台计分屏特写" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Crect width='640' height='360' fill='%23181026'/%3E%3Crect x='90' y='60' width='460' height='240' rx='14' fill='%230a0f1a' stroke='%23ff5a5f' stroke-width='2'/%3E%3Crect x='120' y='95' width='180' height='14' rx='7' fill='%23ff5a5f'/%3E%3Crect x='120' y='130' width='360' height='9' rx='4' fill='%23364a75'/%3E%3Crect x='120' y='152' width='300' height='9' rx='4' fill='%23364a75'/%3E%3Crect x='120' y='190' width='120' height='70' rx='8' fill='%232a1f3d'/%3E%3Crect x='260' y='190' width='120' height='70' rx='8' fill='%232a1f3d'/%3E%3Ctext x='142' y='235' fill='%23ffd166' font-size='24' font-family='sans-serif'%3E51%3C/text%3E%3Ctext x='282' y='235' fill='%234cc9f0' font-size='24' font-family='sans-serif'%3E48%3C/text%3E%3C/svg%3E">
+          <span class="dm-cover-chip">吃瓜现场</span>
+          <span class="dm-cover-time">05:12</span>
+          <span class="dm-play">▶</span>
+        </div>
+        <div class="dm-video-body">
+          <h3>计分屏暂停了两次，第二次之后看台的声音完全变了</h3>
+          <p>我们整理了三段不同区域的观众收音，拼出这场讨论的完整形状。</p>
+          <div class="dm-video-foot">
+            <span class="dm-author-mini"><span class="dm-avatar" style="background:#4cc9f0">现</span>现场收音机</span>
+            <div class="dm-actions">
+              <button class="dm-act dm-like" data-count="963">👍 963</button>
+              <button class="dm-act dm-save">♡ 收藏</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="dm-video-card">
+        <div class="dm-cover">
+          <img alt="视频封面：51每日大赛创作者后台剪辑工作台" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Crect width='640' height='360' fill='%230d211f'/%3E%3Ccircle cx='520' cy='80' r='120' fill='%2334d399' opacity='.14'/%3E%3Crect x='90' y='80' width='300' height='190' rx='12' fill='%230a0f1a' stroke='%2334d399'/%3E%3Crect x='112' y='104' width='256' height='90' rx='6' fill='%2314243d'/%3E%3Crect x='112' y='210' width='150' height='8' rx='4' fill='%2334d399'/%3E%3Crect x='112' y='228' width='210' height='8' rx='4' fill='%23364a75'/%3E%3Crect x='420' y='120' width='140' height='30' rx='15' fill='%23ffd166'/%3E%3Ctext x='440' y='140' fill='%230a0f1a' font-size='13' font-family='sans-serif' font-weight='bold'%3E剪辑中%3C/text%3E%3C/svg%3E">
+          <span class="dm-cover-chip">创作幕后</span>
+          <span class="dm-cover-time">14:02</span>
+          <span class="dm-play">▶</span>
+        </div>
+        <div class="dm-video-body">
+          <h3>一条赛事视频从素材到上线，我们只用了四小时</h3>
+          <p>创作者@剪辑小院 分享时间线工程、字幕模板与快剪节奏的真实做法。</p>
+          <div class="dm-video-foot">
+            <span class="dm-author-mini"><span class="dm-avatar" style="background:#34d399">剪</span>剪辑小院</span>
+            <div class="dm-actions">
+              <button class="dm-act dm-like" data-count="742">👍 742</button>
+              <button class="dm-act dm-save">♡ 收藏</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="dm-video-card">
+        <div class="dm-cover">
+          <img alt="视频封面：51每日大赛决赛终点线判定慢放画面" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Crect width='640' height='360' fill='%23201a10'/%3E%3Cpath d='M0 260 L640 220 L640 360 L0 360 Z' fill='%23140f08'/%3E%3Cg stroke='%23ffd166' stroke-width='4'%3E%3Cpath d='M320 40 L320 300'/%3E%3C/g%3E%3Cg fill='%23ff5a5f'%3E%3Ccircle cx='280' cy='190' r='18'/%3E%3Ccircle cx='370' cy='186' r='18'/%3E%3C/g%3E%3Crect x='60' y='60' width='180' height='36' rx='18' fill='%23ffd166'/%3E%3Ctext x='82' y='84' fill='%230a0f1a' font-size='13' font-family='sans-serif' font-weight='bold'%3EPHOTO FINISH%3C/text%3E%3C/svg%3E">
+          <span class="dm-cover-chip">深度复盘</span>
+          <span class="dm-cover-time">11:48</span>
+          <span class="dm-play">▶</span>
+        </div>
+        <div class="dm-video-body">
+          <h3>0.3 秒之外：终点线判定规则与那三帧画面的关系</h3>
+          <p>裁判组详解影像判定流程，也回应了今天评论区问得最多的五个问题。</p>
+          <div class="dm-video-foot">
+            <span class="dm-author-mini"><span class="dm-avatar" style="background:#ff5a5f">规</span>规则讲清楚</span>
+            <div class="dm-actions">
+              <button class="dm-act dm-like" data-count="1502">👍 1502</button>
+              <button class="dm-act dm-save">♡ 收藏</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="dm-video-card">
+        <div class="dm-cover">
+          <img alt="视频封面：51每日大赛选手赛后拉伸与恢复训练" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Crect width='640' height='360' fill='%23142637'/%3E%3Ccircle cx='140' cy='100' r='90' fill='%234cc9f0' opacity='.16'/%3E%3Cg stroke='%234cc9f0' stroke-width='12' stroke-linecap='round'%3E%3Cpath d='M300 220 L300 130'/%3E%3Cpath d='M300 160 L370 130'/%3E%3Cpath d='M300 170 L240 150'/%3E%3C/g%3E%3Ccircle cx='300' cy='104' r='22' fill='%23ffd166'/%3E%3Crect x='430' y='170' width='150' height='80' rx='10' fill='%23111a2b' stroke='%234cc9f0'/%3E%3Ctext x='450' y='205' fill='%234cc9f0' font-size='14' font-family='sans-serif'%3ERECOVERY%3C/text%3E%3Ctext x='450' y='228' fill='%2394a3c0' font-size='11' font-family='sans-serif'%3E赛后恢复%3C/text%3E%3C/svg%3E">
+          <span class="dm-cover-chip">经验分享</span>
+          <span class="dm-cover-time">07:26</span>
+          <span class="dm-play">▶</span>
+        </div>
+        <div class="dm-video-body">
+          <h3>跑完不是结束：赛后 30 分钟的三个恢复动作</h3>
+          <p>来自赛事医疗保障组的现场演示，适合所有参加每日大赛的选手收藏。</p>
+          <div class="dm-video-foot">
+            <span class="dm-author-mini"><span class="dm-avatar" style="background:#4cc9f0">医</span>赛场医务组</span>
+            <div class="dm-actions">
+              <button class="dm-act dm-like" data-count="588">👍 588</button>
+              <button class="dm-act dm-save">♡ 收藏</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="dm-video-card">
+        <div class="dm-cover">
+          <img alt="视频封面：51每日大赛吃瓜话题投票互动界面" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Crect width='640' height='360' fill='%231e1330'/%3E%3Cg%3E%3Crect x='80' y='90' width='200' height='26' rx='13' fill='%23ff5a5f'/%3E%3Crect x='80' y='140' width='330' height='26' rx='13' fill='%23ffd166' opacity='.85'/%3E%3Crect x='80' y='190' width='150' height='26' rx='13' fill='%234cc9f0' opacity='.85'/%3E%3Crect x='80' y='240' width='260' height='26' rx='13' fill='%23364a75'/%3E%3C/g%3E%3Ctext x='300' y='110' fill='%23fff' font-size='13' font-family='sans-serif'%3E42%25%3C/text%3E%3Ctext x='430' y='160' fill='%230a0f1a' font-size='13' font-family='sans-serif' font-weight='bold'%3E35%25%3C/text%3E%3Ctext x='250' y='210' fill='%23fff' font-size='13' font-family='sans-serif'%3E16%25%3C/text%3E%3C/svg%3E">
+          <span class="dm-cover-chip">互动投票</span>
+          <span class="dm-cover-time">03:55</span>
+          <span class="dm-play">▶</span>
+        </div>
+        <div class="dm-video-body">
+          <h3>今日最大争议点，我们做了个投票让社区自己决定</h3>
+          <p>四个选项、两小时、超过一万票。评论区里最有趣的三个理由都在片尾。</p>
+          <div class="dm-video-foot">
+            <span class="dm-author-mini"><span class="dm-avatar" style="background:#c084fc">投</span>社区投票站</span>
+            <div class="dm-actions">
+              <button class="dm-act dm-like" data-count="2107">👍 2107</button>
+              <button class="dm-act dm-save">♡ 收藏</button>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 专题企划 -->
+<section class="dm-section" id="dmTopics">
+  <div class="dm-wrap">
+    <div class="dm-sec-head">
+      <div class="dm-sec-kicker">PROGRAMS 专题企划</div>
+      <h2>正在进行的三个专题，都在持续更新</h2>
+      <p>专题是 51每日大赛官方内容团队长期运营的精品企划，每个专题都有独立编辑与固定更新节奏，欢迎创作者报名参与共创。</p>
+    </div>
+    <div class="dm-topic-grid">
+      <article class="dm-topic">
+        <div class="dm-topic-status">更新中 · 第 12 期</div>
+        <h3>今日吃瓜：赛事之外的第二现场</h3>
+        <p>从看台收音、评论区高频词到赛后讨论，我们把“围观”本身当成一种内容来记录，每周三与周日更新。</p>
+        <div class="dm-topic-bar"><i style="width:74%"></i></div>
+      </article>
+      <article class="dm-topic">
+        <div class="dm-topic-status">报名中 · 截止 11/30</div>
+        <h3>城市夜跑挑战赛 · 创作者共创单元</h3>
+        <p>面向所有在册创作者开放报名，提交夜跑主题短片即可参与评选，优胜作品将进入官方首页焦点位。</p>
+        <div class="dm-topic-bar"><i style="width:52%"></i></div>
+      </article>
+      <article class="dm-topic">
+        <div class="dm-topic-status">已完结 · 可回看</div>
+        <h3>365 天赛点计划：一场比赛的完整生命</h3>
+        <p>用一整年跟拍同一场系列赛，从筹备、报名、预赛到决赛，记录赛事背后的组织者与参与者。</p>
+        <div class="dm-topic-bar"><i style="width:100%"></i></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 创作者 -->
+<section class="dm-section dm-section-alt" id="dmCreators">
+  <div class="dm-wrap">
+    <div class="dm-sec-head">
+      <div class="dm-sec-kicker">CREATORS 创作者</div>
+      <h2>社区的活力，来自这些持续更新的创作者</h2>
+      <p>他们有的是赛事当事人，有的是现场记录者，也有专门做复盘与数据整理的硬核作者。点击卡片可以查看作者档案。</p>
+    </div>
+    <div class="dm-creator-grid" id="dmCreatorGrid">
+      <article class="dm-creator" data-name="赛道边的老周" data-field="赛事跟拍 · 现场纪实" data-desc="跟拍城市路跑十二年，习惯提前三小时到现场找机位。擅长把混乱的现场整理成有呼吸感的镜头。">
+        <span class="dm-avatar" style="background:#ffd166">周</span>
+        <h3>赛道边的老周</h3>
+        <div class="dm-creator-field">赛事跟拍 · 现场纪实</div>
+        <p>跟拍城市路跑十二年，习惯提前三小时到现场找机位。</p>
+        <div class="dm-creator-data">
+          <div><b>216</b>作品</div>
+          <div><b>8.4万</b>粉丝</div>
+        </div>
+      </article>
+      <article class="dm-creator" data-name="吃瓜研究所" data-field="话题整理 · 社区观察" data-desc="专门研究评论区生态的内容小组，每天整理高频讨论词与情绪走向，用数据说话，也坚持给每个观点留位置。">
+        <span class="dm-avatar" style="background:#ff5a5f">瓜</span>
+        <h3>吃瓜研究所</h3>
+        <div class="dm-creator-field">话题整理 · 社区观察</div>
+        <p>专门研究评论区生态的内容小组，每天整理高频讨论词。</p>
+        <div class="dm-creator-data">
+          <div><b>340</b>作品</div>
+          <div><b>12.1万</b>粉丝</div>
+        </div>
+      </article>
+      <article class="dm-creator" data-name="规则讲清楚" data-field="赛制解析 · 知识科普" data-desc="前赛事裁判，现在做规则科普。相信大多数争议都源于信息不对称，所以愿意把判定流程一条条讲明白。">
+        <span class="dm-avatar" style="background:#4cc9f0">规</span>
+        <h3>规则讲清楚</h3>
+        <div class="dm-creator-field">赛制解析 · 知识科普</div>
+        <p>前赛事裁判，现在做规则科普，把判定流程一条条讲明白。</p>
+        <div class="dm-creator-data">
+          <div><b>128</b>作品</div>
+          <div><b>6.7万</b>粉丝</div>
+        </div>
+      </article>
+      <article class="dm-creator" data-name="剪辑小院" data-field="创作幕后 · 剪辑干货" data-desc="两个人的后期工作室，专注赛事类内容的快剪方法论，常年在社区分享工程模板与节奏设计思路。">
+        <span class="dm-avatar" style="background:#34d399">剪</span>
+        <h3>剪辑小院</h3>
+        <div class="dm-creator-field">创作幕后 · 剪辑干货</div>
+        <p>两个人的后期工作室，专注赛事类内容的快剪方法论。</p>
+        <div class="dm-creator-data">
+          <div><b>97</b>作品</div>
+          <div><b>5.2万</b>粉丝</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 榜单 + 评价 -->
+<section class="dm-section" id="dmRank">
+  <div class="dm-wrap">
+    <div class="dm-sec-head">
+      <div class="dm-sec-kicker">RANKING 榜单与口碑</div>
+      <h2>今日热度榜，以及社区里真实的声音</h2>
+      <p>榜单按播放、互动与完播综合计算，每日 10:00 更新。右侧内容来自社区评价，保留原话，不做修饰。</p>
+    </div>
+    <div class="dm-rank-wrap">
+      <div class="dm-rank-list">
+        <h3>今日热度榜</h3>
+        <div class="dm-rank-item"><span class="dm-rank-num">1</span><span class="dm-rank-title">最后两百米：三次反超的完整时间线</span><span class="dm-rank-hot">3.2万</span></div>
+        <div class="dm-rank-item"><span class="dm-rank-num">2</span><span class="dm-rank-title">计分屏暂停两次，看台声音变了</span><span class="dm-rank-hot">2.7万</span></div>
+        <div class="dm-rank-item"><span class="dm-rank-num">3</span><span class="dm-rank-title">0.3 秒之外：判定规则详解</span><span class="dm-rank-hot">2.4万</span></div>
+        <div class="dm-rank-item"><span class="dm-rank-num">4</span><span class="dm-rank-title">今天最大争议点，社区投票结果</span><span class="dm-rank-hot">1.9万</span></div>
+        <div class="dm-rank-item"><span class="dm-rank-num">5</span><span class="dm-rank-title">赛后 30 分钟的恢复动作演示</span><span class="dm-rank-hot">1.5万</span></div>
+      </div>
+      <div class="dm-rank-list">
+        <h3>新锐创作者榜</h3>
+        <div class="dm-rank-item"><span class="dm-rank-num">1</span><span class="dm-rank-title">看台第七排</span><span class="dm-rank-hot">+1.2万粉</span></div>
+        <div class="dm-rank-item"><span class="dm-rank-num">2</span><span class="dm-rank-title">夜跑补给站</span><span class="dm-rank-hot">+9600粉</span></div>
+        <div class="dm-rank-item"><span class="dm-rank-num">3</span><span class="dm-rank-title">数据看比赛</span><span class="dm-rank-hot">+8100粉</span></div>
+        <div class="dm-rank-item"><span class="dm-rank-num">4</span><span class="dm-rank-title">终点线摄影组</span><span class="dm-rank-hot">+7300粉</span></div>
+        <div class="dm-rank-item"><span class="dm-rank-num">5</span><span class="dm-rank-title">赛后复盘室</span><span class="dm-rank-hot">+6800粉</span></div>
+      </div>
+    </div>
+    <div style="height:30px"></div>
+    <div class="dm-review-grid">
+      <div class="dm-review">
+        <div class="dm-review-head"><span class="dm-avatar" style="background:#ffd166">李</span><b>李默</b><span>2小时前</span></div>
+        <p>每天下班第一件事就是刷今日吃瓜，剪得比很多电视节目还清楚。就是更新时间能不能稳定在晚上八点。</p>
+      </div>
+      <div class="dm-review">
+        <div class="dm-review-head"><span class="dm-avatar" style="background:#4cc9f0">陈</span><b>陈小舟</b><span>4小时前</span></div>
+        <p>规则那期看完，我把评论区翻了一遍，发现大家吵的其实不是判定，是信息差。这种科普希望多做。</p>
+      </div>
+      <div class="dm-review">
+        <div class="dm-review-head"><span class="dm-avatar" style="background:#ff5a5f">王</span><b>王一一</b><span>5小时前</span></div>
+        <p>第一次投稿就上了专题，编辑改了两稿，但确实比我自己剪的好看太多。这个社区的反馈很实在。</p>
+      </div>
+      <div class="dm-review">
+        <div class="dm-review-head"><span class="dm-avatar" style="background:#34d399">赵</span><b>赵野</b><span>7小时前</span></div>
+        <p>榜单更新挺勤的，不过希望有个“只看现场”的筛选，我主要看跟拍类，复盘偶尔看。</p>
+      </div>
+      <div class="dm-review">
+        <div class="dm-review-head"><span class="dm-avatar" style="background:#c084fc">吴</span><b>吴九</b><span>9小时前</span></div>
+        <p>作为参赛选手，赛后恢复那期真的有用。第二天腿没那么酸，谢谢赛场医务组。</p>
+      </div>
+      <div class="dm-review">
+        <div class="dm-review-head"><span class="dm-avatar" style="background:#ffd166">周</span><b>周晚</b><span>11小时前</span></div>
+        <p>收藏和点赞都很顺，就是分享到微信之后标题有点长，可以再优化下。</p>
+      </div>
+      <div class="dm-review">
+        <div class="dm-review-head"><span class="dm-avatar" style="background:#4cc9f0">孙</span><b>孙未</b><span>12小时前</span></div>
+        <p>看了 365 天赛点计划，才知道办一场比赛要协调这么多事。这种幕后内容才是平台的价值。</p>
+      </div>
+      <div class="dm-review">
+        <div class="dm-review-head"><span class="dm-avatar" style="background:#ff5a5f">钱</span><b>钱多</b><span>昨天</span></div>
+        <p>投票功能挺好玩的，就是结果出来太快，还没想好就结束了。建议延长到 24 小时。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 品牌故事 -->
+<section class="dm-section dm-section-alt" id="dmStory">
+  <div class="dm-wrap">
+    <div class="dm-sec-head">
+      <div class="dm-sec-kicker">STORY 品牌故事</div>
+      <h2>我们为什么每天记录一场比赛</h2>
+      <p>51每日大赛官方网站的来历，以及这个平台坚持到今天的几件事。</p>
+    </div>
+    <div class="dm-story-grid">
+      <div class="dm-story-text">
+        <p><b>从一场社区比赛开始。</b>最初只是一群人在周末拍同城小比赛，把素材剪成三分钟的视频发在论坛里。后来投稿越来越多，我们就做了个固定的更新栏目，名字就叫“51每日大赛”——每天都有赛，每天都能看。</p>
+        <p>到今天，51每日大赛已经是一个持续运营的视频品牌与内容社区。这里有官方赛事组的现场机位，也有普通观众举着手机拍的看台视角；有专业裁判的规则科普，也有纯粹凑热闹的吃瓜记录。<b>我们相信，赛事真正动人的部分，往往发生在比分之外。</b></p>
+        <p>作为一个深耕垂直领域的视频平台，我们坚持三件事：内容原创、信息可查、讨论有边界。所有官方发布的焦点视频都标注拍摄时间与来源；所有涉及判定的争议，我们尽量请到当事人或专业人士把话说清楚；评论区允许不同意见，但不欢迎人身攻击。</p>
+        <p>对创作者，我们提供选题支持、剪辑指导与流量扶持；对品牌合作方，我们提供赛事内容定制与社区共创方案。如果你也喜欢在比赛里找故事，欢迎加入这个还在长大的社区。</p>
+      </div>
+      <div class="dm-story-side">
+        <div class="dm-story-item">
+          <i>◆</i>
+          <div>
+            <h3>真实优先</h3>
+            <p>官方内容坚持现场原声与原始素材，不制造冲突，不拼接误导。</p>
+          </div>
+        </div>
+        <div class="dm-story-item">
+          <i>◈</i>
+          <div>
+            <h3>创作者共建</h3>
+            <p>专题开放共创席位，优质投稿与官方内容同等待遇，稿酬透明。</p>
+          </div>
+        </div>
+        <div class="dm-story-item">
+          <i>◇</i>
+          <div>
+            <h3>长期主义</h3>
+            <p>365 天赛点计划这样的长周期企划，是这个平台最想做的事。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 作品墙 -->
+<section class="dm-section" id="dmWall">
+  <div class="dm-wrap">
+    <div class="dm-sec-head">
+      <div class="dm-sec-kicker">GALLERY 影像墙</div>
+      <h2>本周影像墙：来自创作者与观众的共同记录</h2>
+      <p>尺寸不同，视角不同，但都拍自同一批赛事现场。影像墙每周更新一次，欢迎上传你的作品。</p>
+    </div>
+    <div class="dm-wall">
+      <div class="dm-wall-item dm-wall-big">
+        <img alt="影像墙大图：夜色中的赛道与远处城市灯光" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Crect width='800' height='600' fill='%230b1424'/%3E%3Ccircle cx='600' cy='140' r='70' fill='%23ffd166' opacity='.5'/%3E%3Cpath d='M0 420 L800 380 L800 600 L0 600 Z' fill='%2312243a'/%3E%3Cg fill='%23ffd166' opacity='.8'%3E%3Ccircle cx='120' cy='330' r='6'/%3E%3Ccircle cx='260' cy='316' r='6'/%3E%3Ccircle cx='400' cy='302' r='6'/%3E%3Ccircle cx='540' cy='290' r='6'/%3E%3C/g%3E%3Cg fill='%23ff5a5f'%3E%3Cpath d='M340 420 L370 360 L400 420 Z'/%3E%3Cpath d='M430 430 L460 372 L490 430 Z'/%3E%3C/g%3E%3C/svg%3E">
+        <div class="dm-wall-cap">夜跑决赛 · 赛道边的城市灯光</div>
+      </div>
+      <div class="dm-wall-item">
+        <img alt="影像墙小图：观众席手持应援牌的瞬间" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%231a2536'/%3E%3Ccircle cx='200' cy='110' r='34' fill='%23ffd166'/%3E%3Cpath d='M150 210 Q200 150 250 210 L250 260 L150 260 Z' fill='%23ff5a5f' opacity='.85'/%3E%3Crect x='240' y='70' width='70' height='90' rx='6' fill='%234cc9f0' opacity='.7'/%3E%3C/svg%3E">
+        <div class="dm-wall-cap">看台应援 · 第七排</div>
+      </div>
+      <div class="dm-wall-item">
+        <img alt="影像墙小图：计分屏绿色数字与倒计时" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%230a0f1a'/%3E%3Crect x='40' y='60' width='320' height='150' rx='10' fill='%23111a2b' stroke='%2334d399' stroke-width='2'/%3E%3Ctext x='70' y='130' fill='%2334d399' font-size='46' font-family='monospace'%3E12:40%3C/text%3E%3Crect x='70' y='155' width='240' height='8' rx='4' fill='%2334d399' opacity='.5'/%3E%3C/svg%3E">
+        <div class="dm-wall-cap">计分屏 · 终场倒计时</div>
+      </div>
+      <div class="dm-wall-item dm-wall-wide">
+        <img alt="影像墙宽图：终点线前两位选手的剪影" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 300'%3E%3Crect width='800' height='300' fill='%231b1610'/%3E%3Crect x='380' y='0' width='6' height='300' fill='%23ffd166' opacity='.6'/%3E%3Cg fill='%23ff5a5f'%3E%3Ccircle cx='340' cy='130' r='20'/%3E%3Cpath d='M320 150 L360 150 L368 220 L336 220 Z'/%3E%3C/g%3E%3Cg fill='%234cc9f0'%3E%3Ccircle cx='440' cy='126' r='20'/%3E%3Cpath d='M420 146 L460 146 L468 216 L436 216 Z'/%3E%3C/g%3E%3C/svg%3E">
+        <div class="dm-wall-cap">终点线 · 两个人的最后一步</div>
+      </div>
+      <div class="dm-wall-item">
+        <img alt="影像墙小图：赛后志愿者整理补给桌" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%2313212a'/%3E%3Crect x='40' y='170' width='320' height='18' rx='9' fill='%23364a75'/%3E%3Cg fill='%23ffd166'%3E%3Crect x='70' y='120' width='26' height='46' rx='6'/%3E%3Crect x='112' y='114' width='26' height='52' rx='6'/%3E%3Crect x='154' y='126' width='26' height='40' rx='6'/%3E%3C/g%3E%3Ccircle cx='300' cy='120' r='24' fill='%2334d399'/%3E%3C/svg%3E">
+        <div class="dm-wall-cap">补给站 · 赛后的第一杯水</div>
+      </div>
+      <div class="dm-wall-item">
+        <img alt="影像墙小图：后台采访间的麦克风与灯光" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23141126'/%3E%3Ccircle cx='200' cy='70' r='46' fill='%23c084fc' opacity='.35'/%3E%3Crect x='190' y='100' width='20' height='90' rx='10' fill='%23364a75'/%3E%3Ccircle cx='200' cy='94' r='20' fill='%23ff5a5f'/%3E%3Crect x='120' y='210' width='160' height='12' rx='6' fill='%23c084fc' opacity='.6'/%3E%3C/svg%3E">
+        <div class="dm-wall-cap">采访间 · 上台前的一分钟</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 企业动态 -->
+<section class="dm-section dm-section-alt" id="dmNews">
+  <div class="dm-wrap">
+    <div class="dm-sec-head">
+      <div class="dm-sec-kicker">NEWS 企业动态</div>
+      <h2>官方发布与内容更新</h2>
+      <p>来自 51每日大赛官方团队的近期动态，包括内容更新、活动报名与功能调整。</p>
+    </div>
+    <div class="dm-news-list">
+      <div class="dm-news-item">
+        <span class="dm-news-date">2026.11.19</span>
+        <h3>今日吃瓜专题第 12 期上线，新增看台收音与评论高频词分析</h3>
+        <span class="dm-news-chip">内容更新</span>
+      </div>
+      <div class="dm-news-item">
+        <span class="dm-news-date">2026.11.17</span>
+        <h3>城市夜跑挑战赛创作者共创单元开放报名，11 月 30 日截止</h3>
+        <span class="dm-news-chip">活动报名</span>
+      </div>
+      <div class="dm-news-item">
+        <span class="dm-news-date">2026.11.14</span>
+        <h3>创作者激励计划第二期公布，优质投稿将获得首页焦点位推荐</h3>
+        <span class="dm-news-chip">官方发布</span>
+      </div>
+      <div class="dm-news-item">
+        <span class="dm-news-date">2026.11.10</span>
+        <h3>站内搜索支持按赛事、话题、创作者三类结果分组呈现</h3>
+        <span class="dm-news-chip">功能调整</span>
+      </div>
+      <div class="dm-news-item">
+        <span class="dm-news-date">2026.11.05</span>
+        <h3>365 天赛点计划收官，全年 48 期跟拍内容已全部整理归档</h3>
+        <span class="dm-news-chip">专题完结</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="dm-section" id="dmFaq">
+  <div class="dm-wrap">
+    <div class="dm-sec-head">
+      <div class="dm-sec-kicker">HELP 帮助中心</div>
+      <h2>常见问题</h2>
+      <p>关于投稿、播放、版权与合作的常见疑问，点击标题展开。</p>
+    </div>
+    <div class="dm-faq">
+      <details open>
+        <summary>如何向 51每日大赛投稿自己的赛事视频？</summary>
+        <p>点击页面中的“我要投稿”按钮即可打开投稿弹窗，填写标题、内容简介与联系方式。编辑会在三个工作日内回复，通过后会安排排期并通知你。稿件要求为原创或已获授权的内容，涉及他人肖像请提前沟通。</p>
+      </details>
+      <details>
+        <summary>平台的热门视频和榜单是怎么计算的？</summary>
+        <p>热度综合播放量、完播率、点赞与收藏互动计算，每日 10:00 更新一次。我们不售卖榜单位置，所有排序均由数据与编辑复审共同决定。</p>
+      </details>
+      <details>
+        <summary>视频里的赛事判定争议，官方会给结论吗？</summary>
+        <p>官方不做临场判定，但会邀请裁判、组织方与当事人在“规则讲清楚”栏目中说明流程。有明确结论的，会以官方发布形式更新在内容页与动态中。</p>
+      </details>
+      <details>
+        <summary>我可以在自己的账号里转发这里的视频吗？</summary>
+        <p>官方内容支持规范转载，请保留片头标识并注明来源。创作者个人作品需单独取得作者同意，可在作者档案页找到联系方式。</p>
+      </details>
+      <details>
+        <summary>品牌或机构想合作定制赛事内容，怎么联系？</summary>
+        <p>可通过页脚的合作邮箱与我们联系，说明合作方向、预算范围与时间要求。我们承接赛事记录、专题共创与社区活动等类型的合作。</p>
+      </details>
+      <details>
+        <summary>观看时遇到播放问题怎么办？</summary>
+        <p>建议先刷新页面并检查网络；如仍无法播放，可通过页脚反馈邮箱说明视频标题与出现时间，技术团队会尽快排查。</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- 投稿 CTA -->
+<section class="dm-section" id="dmJoin">
+  <div class="dm-wrap">
+    <div class="dm-cta">
+      <h2>你的镜头，也可以是今日大赛的一部分</h2>
+      <p>无论是专业跟拍还是手机随手记录，只要真实、有趣、有现场感，我们都愿意给它一个位置。投稿通道长期开放，期待与你一起把社区做得更好。</p>
+      <div class="dm-btn-row">
+        <button class="dm-btn dm-btn-main" id="dmSubmitOpen2">立即投稿 ▸</button>
+        <button class="dm-btn dm-btn-ghost" id="dmShareOpen">分享给同好</button>
+        <button class="dm-btn dm-btn-ghost" id="dmReportOpen">反馈与举报</button>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="dm-footer">
+  <div class="dm-wrap">
+    <div class="dm-footer-grid">
+      <div>
+        <div class="dm-logo" style="margin-bottom:14px">
+          <span class="dm-logo-mark">51</span>
+          <span class="dm-logo-text"><b>51每日大赛</b><small>DAILY MATCH</small></span>
+        </div>
+        <p>51每日大赛官方网站，持续运营的赛事视频社区。我们以原创正版内容记录每一场比赛，用真实影像陪伴每一位关注赛事的用户。</p>
+      </div>
+      <div>
+        <h4>内容导航</h4>
+        <ul>
+          <li><a href="#dmFocus">焦点赛事</a></li>
+          <li><a href="#dmVideos">热门视频</a></li>
+          <li><a href="#dmTopics">专题企划</a></li>
+          <li><a href="#dmCreators">创作者矩阵</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于平台</h4>
+        <ul>
+          <li><a href="#dmStory">品牌故事</a></li>
+          <li><a href="#dmNews">企业动态</a></li>
+          <li><a href="#dmRank">榜单规则</a></li>
+          <li><a href="#dmFaq">帮助中心</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>联系我们</h4>
+        <ul>
+          <li>合作邮箱：partner@51daily.example</li>
+          <li>投稿邮箱：submit@51daily.example</li>
+          <li>反馈邮箱：feedback@51daily.example</li>
+          <li>工作时间：周一至周五 10:00–19:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="dm-footer-bottom">
+      <span>© 2026 51每日大赛 版权所有 · 官方网站 · 持续运营中</span>
+      <span>内容均为原创正版，转载请注明来源</span>
+    </div>
+  </div>
+</footer>
+
+<button class="dm-top-btn" id="dmTopBtn" aria-label="回到顶部">↑</button>
+<div class="dm-toast" id="dmToast">已复制链接</div>
+
+<!-- 分享弹窗 -->
+<div class="dm-modal" id="dmShareModal">
+  <div class="dm-modal-box">
+    <button class="dm-modal-close" data-dm-close>×</button>
+    <h3>分享给同好</h3>
+    <p class="dm-meta">把今天的赛点分享出去，一起看比赛找故事。</p>
+    <div class="dm-share-row">
+      <button data-dm-share="微信"><span>💬</span>微信</button>
+      <button data-dm-share="微博"><span>🌐</span>微博</button>
+      <button data-dm-share="QQ"><span>🐧</span>QQ</button>
+      <button data-dm-share="复制链接"><span>🔗</span>复制链接</button>
+    </div>
+    <p class="dm-meta" id="dmShareTip">选择渠道后会有对应提示。</p>
+  </div>
+</div>
+
+<!-- 投稿弹窗 -->
+<div class="dm-modal" id="dmSubmitModal">
+  <div class="dm-modal-box">
+    <button class="dm-modal-close" data-dm-close>×</button>
+    <h3>投稿给 51每日大赛</h3>
+    <p class="dm-meta">填写基本信息，编辑会在三个工作日内联系你。</p>
+    <input type="text" id="dmSubmitTitle" placeholder="作品标题，例如：夜跑决赛的最后一个弯道">
+    <textarea id="dmSubmitDesc" placeholder="简单描述你的素材内容、拍摄时间与地点"></textarea>
+    <input type="text" id="dmSubmitContact" placeholder="联系方式（邮箱或手机）">
+    <button class="dm-btn dm-btn-main" id="dmSubmitSend" style="width:100%;justify-content:center">提交投稿</button>
+  </div>
+</div>
+
+<!-- 反馈弹窗 -->
+<div class="dm-modal" id="dmReportModal">
+  <div class="dm-modal-box">
+    <button class="dm-modal-close" data-dm-close>×</button>
+    <h3>反馈与举报</h3>
+    <p class="dm-meta">我们会认真阅读每一条反馈，涉及违规内容将优先处理。</p>
+    <textarea id="dmReportText" placeholder="请描述你遇到的问题或需要反馈的内容"></textarea>
+    <button class="dm-btn dm-btn-main" id="dmReportSend" style="width:100%;justify-content:center">提交反馈</button>
+  </div>
+</div>
+
+<!-- 作者信息弹窗 -->
+<div class="dm-modal" id="dmAuthorModal">
+  <div class="dm-modal-box">
+    <button class="dm-modal-close" data-dm-close>×</button>
+    <h3 id="dmAuthorName">作者档案</h3>
+    <p class="dm-meta" id="dmAuthorField">擅长领域</p>
+    <p id="dmAuthorDesc" style="font-size:13.5px;color:#c3cde4;margin-bottom:18px"></p>
+    <button class="dm-btn dm-btn-ghost" data-dm-close style="width:100%;justify-content:center">关闭</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var header=document.getElementById('dmHeader');
+  var burger=document.getElementById('dmBurger');
+  var nav=document.getElementById('dmNav');
+  var toast=document.getElementById('dmToast');
+  var toastTimer=null;
+
+  function showToast(msg){
+    toast.textContent=msg;
+    toast.classList.add('dm-show');
+    clearTimeout(toastTimer);
+    toastTimer=setTimeout(function(){toast.classList.remove('dm-show');},2200);
+  }
+
+  /* 移动端导航 */
+  if(burger){
+    burger.addEventListener('click',function(){
+      header.classList.toggle('dm-header-open');
+    });
+    nav.addEventListener('click',function(e){
+      if(e.target.tagName==='A'){header.classList.remove('dm-header-open');}
+    });
+  }
+
+  /* 搜索反馈 */
+  var searchInput=document.getElementById('dmSearchInput');
+  var searchBtn=document.getElementById('dmSearchBtn');
+  var searchHint=document.getElementById('dmSearchHint');
+  var searchMap={
+    '夜跑':'夜跑挑战赛相关：焦点视频《最后两百米》与专题《城市夜跑挑战赛共创单元》',
+    '吃瓜':'今日吃瓜专题：看台收音、评论高频词与社区投票，共 6 条内容',
+    '规则':'规则讲清楚栏目：终点线判定、并线规则与申诉流程',
+    '创作者':'创作者矩阵：赛道边的老周、吃瓜研究所、规则讲清楚、剪辑小院',
+    '剪辑':'创作幕后：从素材到上线的四小时快剪方法',
+    '榜单':'热度榜与新锐创作者榜，每日 10:00 更新',
+    '投稿':'投稿通道长期开放，点击“我要投稿”填写信息',
+    '复盘':'深度复盘内容：判定规则、配速变化与关键节点分析'
+  };
+  function doSearch(){
+    var key=(searchInput.value||'').trim();
+    if(!key){
+      searchHint.innerHTML='输入关键词试试，例如 <b>夜跑</b>、<b>吃瓜</b>、<b>规则</b>。';
+      searchHint.classList.add('dm-open');
+      return;
+    }
+    var hit='';
+    for(var k in searchMap){
+      if(key.indexOf(k)>-1||k.indexOf(key)>-1){hit=searchMap[k];break;}
+    }
+    if(hit){
+      searchHint.innerHTML='找到相关内容：'+hit;
+    }else{
+      searchHint.innerHTML='暂未找到“<b>'+key.replace(/[<>&]/g,'')+'</b>”的直接结果，可尝试“夜跑”“吃瓜”“规则”“榜单”等关键词。';
+    }
+    searchHint.classList.add('dm-open');
+  }
+  if(searchBtn){searchBtn.addEventListener('click',doSearch);}
+  if(searchInput){
+    searchInput.addEventListener('keydown',function(e){if(e.key==='Enter'){doSearch();}});
+    searchInput.addEventListener('focus',function(){
+      if(!searchHint.innerHTML){
+        searchHint.innerHTML='输入关键词试试，例如 <b>夜跑</b>、<b>吃瓜</b>、<b>规则</b>。';
+      }
+      searchHint.classList.add('dm-open');
+    });
+    document.addEventListener('click',function(e){
+      if(!searchHint.contains(e.target)&&e.target!==searchInput&&e.target!==searchBtn){
+        searchHint.classList.remove('dm-open');
+      }
+    });
+  }
+
+  /* 点赞与收藏 */
+  document.querySelectorAll('.dm-like').forEach(function(btn){
+    btn.addEventListener('click',function(e){
+      e.preventDefault();e.stopPropagation();
+      var base=parseInt(btn.getAttribute('data-count'),10);
+      var on=btn.classList.toggle('dm-act-on');
+      btn.textContent=(on?'👍 ':'👍 ')+(on?base+1:base);
+      showToast(on?'已点赞':'已取消点赞');
+    });
+  });
+  document.querySelectorAll('.dm-save').forEach(function(btn){
+    btn.addEventListener('click',function(e){
+      e.preventDefault();e.stopPropagation();
+      var on=btn.classList.toggle('dm-save-on');
+      btn.textContent=on?'♥ 已收藏':'♡ 收藏';
+      showToast(on?'已收藏到我的列表':'已取消收藏');
+    });
+  });
+
+  /* 播放按钮提示 */
+  document.querySelectorAll('.dm-play').forEach(function(p){
+    p.addEventListener('click',function(e){
+      e.preventDefault();e.stopPropagation();
+      showToast('正在加载高清片源…');
+    });
+  });
+
+  /* 作者弹窗 */
+  var authorModal=document.getElementById('dmAuthorModal');
+  var authorName=document.getElementById('dmAuthorName');
+  var authorField=document.getElementById('dmAuthorField');
+  var authorDesc=document.getElementById('dmAuthorDesc');
+  document.querySelectorAll('.dm-creator').forEach(function(card){
+    card.addEventListener('click',function(){
+      authorName.textContent=card.getAttribute('data-name')+' · 创作者档案';
+      authorField.textContent=card.getAttribute('data-field');
+      authorDesc.textContent=card.getAttribute('data-desc')+' 持续在 51每日大赛更新原创内容，欢迎关注与交流。';
+      authorModal.classList.add('dm-open');
+    });
+  });
+
+  /* 弹窗通用关闭 */
+  document.querySelectorAll('.dm-modal').forEach(function(m){
+    m.addEventListener('click',function(e){
+      if(e.target===m||e.target.hasAttribute('data-dm-close')){m.classList.remove('dm-open');}
+    });
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){
+      document.querySelectorAll('.dm-modal.dm-open').forEach(function(m){m.classList.remove('dm-open');});
+    }
+  });
+
+  /* 分享 */
+  var shareModal=document.getElementById('dmShareModal');
+  var shareTip=document.getElementById('dmShareTip');
+  function openShare(){shareModal.classList.add('dm-open');}
+  var so=document.getElementById('dmShareOpen');
+  if(so){so.addEventListener('click',openShare);}
+  document.querySelectorAll('[data-dm-share]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var ch=btn.getAttribute('data-dm-share');
+      if(ch==='复制链接'){
+        var url=location.href.split('#')[0]+'#dmHero';
+        if(navigator.clipboard&&navigator.clipboard.writeText){
+          navigator.clipboard.writeText(url).then(function(){
+            shareTip.textContent='链接已复制到剪贴板。';
+            showToast('已复制链接');
+          }).catch(function(){
+            shareTip.textContent='链接：'+url;
+            showToast('已生成分享链接');
+          });
+        }else{
+          shareTip.textContent='链接：'+url;
+          showToast('已生成分享链接');
+        }
+      }else{
+        shareTip.textContent='已生成'+ch+'分享入口，可在对应应用内粘贴打开。';
+        showToast('已准备分享到'+ch);
+      }
+    });
+  });
+
+  /* 投稿 */
+  var submitModal=document.getElementById('dmSubmitModal');
+  var s1=document.getElementById('dmSubmitOpen');
+  var s2=document.getElementById('dmSubmitOpen2');
+  function openSubmit(){submitModal.classList.add('dm-open');}
+  if(s1){s1.addEventListener('click',openSubmit);}
+  if(s2){s2.addEventListener('click',openSubmit);}
+  var submitSend=document.getElementById('dmSubmitSend');
+  if(submitSend){
+    submitSend.addEventListener('click',function(){
+      var t=document.getElementById('dmSubmitTitle').value.trim();
+      var c=document.getElementById('dmSubmitContact').value.trim();
+      if(!t){showToast('请先填写作品标题');return;}
+      if(!c){showToast('请填写联系方式');return;}
+      submitModal.classList.remove('dm-open');
+      showToast('投稿已提交，编辑会尽快联系你');
+      document.getElementById('dmSubmitTitle').value='';
+      document.getElementById('dmSubmitDesc').value='';
+      document.getElementById('dmSubmitContact').value='';
+    });
+  }
+
+  /* 反馈 */
+  var reportModal=document.getElementById('dmReportModal');
+  var ro=document.getElementById('dmReportOpen');
+  if(ro){ro.addEventListener('click',function(){reportModal.classList.add('dm-open');});}
+  var reportSend=document.getElementById('dmReportSend');
+  if(reportSend){
+    reportSend.addEventListener('click',function(){
+      var txt=document.getElementById('dmReportText').value.trim();
+      if(!txt){showToast('请填写反馈内容');return;}
+      reportModal.classList.remove('dm-open');
+      document.getElementById('dmReportText').value='';
+      showToast('反馈已收到，感谢你的帮助');
+    });
+  }
+
+  /* 回到顶部 */
+  var topBtn=document.getElementById('dmTopBtn');
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>420){topBtn.classList.add('dm-show');}
+    else{topBtn.classList.remove('dm-show');}
+  });
+  topBtn.addEventListener('click',function(){
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+
+  /* 导航高亮 */
+  var sections=document.querySelectorAll('main section[id]');
+  var navLinks=document.querySelectorAll('.dm-nav a');
+  window.addEventListener('scroll',function(){
+    var pos=window.scrollY+180;
+    var current='';
+    sections.forEach(function(sec){
+      if(sec.offsetTop<=pos){current=sec.id;}
+    });
+    navLinks.forEach(function(a){
+      a.classList.toggle('dm-nav-on',a.getAttribute('href')==='#'+current);
+    });
+  });
+
+  /* 首屏数字动画 */
+  var stats=document.querySelectorAll('.dm-stat b');
+  var done=false;
+  function animateStats(){
+    if(done)return;
+    done=true;
+    stats.forEach(function(el){
+      var raw=el.textContent;
+      el.style.opacity='0';
+      setTimeout(function(){el.style.transition='opacity .5s';el.style.opacity='1';},120);
+    });
+  }
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>80){animateStats();}
+  });
+})();
+</script>
+</body>
+                                                                                                                                  </html>
